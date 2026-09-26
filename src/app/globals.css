@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
+  --font-display: var(--font-syne);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-atelier-black: #0B0C0E;
+  --color-atelier-surface: #121316;
+  --color-atelier-elevated: #17191E;
+  --color-atelier-border: #22252C;
+  --color-atelier-border-light: #2E333C;
+  --color-atelier-champagne: #C5A880;
+  --color-atelier-champagne-light: #DFCEB7;
+  --color-atelier-champagne-dark: #9F835E;
+  --color-atelier-silver: #F4F4F5;
+  --color-atelier-muted: #8C909A;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background-color: #0B0C0E;
+  color: #F4F4F5;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0B0C0E;
+  color: #F4F4F5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #C5A880;
+  color: #0B0C0E;
+}
+
+:focus-visible {
+  outline: 1px solid #C5A880;
+  outline-offset: 3px;
 }
