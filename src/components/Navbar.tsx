@@ -10,11 +10,11 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Layanan", href: "#layanan" },
-    { label: "Paket & Biaya", href: "#paket" },
-    { label: "Kalkulator Dimensi", href: "#kalkulator" },
-    { label: "Hasil Studio", href: "#hasil" },
-    { label: "Standar Mutu", href: "#standar" },
-    { label: "Atelier & Lokasi", href: "#lokasi" },
+    { label: "Paket", href: "#paket" },
+    { label: "Kalkulator", href: "#kalkulator" },
+    { label: "Portofolio", href: "#hasil" },
+    { label: "Standar", href: "#standar" },
+    { label: "Lokasi", href: "#lokasi" },
   ];
 
   return (
@@ -29,22 +29,22 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-5 xl:gap-8 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs font-medium tracking-[0.15em] text-[#8C909A] uppercase transition-colors hover:text-[#F4F4F5]"
+              className="text-xs font-medium tracking-[0.12em] text-[#8C909A] uppercase whitespace-nowrap transition-colors hover:text-[#F4F4F5]"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-6 sm:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           <a
             href={`tel:${studioData.contact.phone}`}
-            className="text-xs font-mono tracking-wider text-[#8C909A] transition-colors hover:text-white"
+            className="hidden text-xs font-mono tracking-wider text-[#8C909A] transition-colors hover:text-white xl:inline-block"
           >
             {studioData.contact.formattedPhone}
           </a>
@@ -56,36 +56,44 @@ export default function Navbar() {
           </a>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className="flex h-10 w-10 items-center justify-center border border-[#22252C] text-[#8C909A] transition-colors hover:border-[#C5A880] hover:text-white lg:hidden"
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation menu"
-        >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <a
+            href="#booking"
+            className="inline-flex h-9 items-center justify-center border border-[#C5A880]/60 px-3 text-[11px] font-semibold tracking-wider text-[#C5A880] uppercase hover:bg-[#C5A880] hover:text-[#0B0C0E]"
+          >
+            Reservasi
+          </a>
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex h-9 w-9 items-center justify-center border border-[#22252C] text-[#8C909A] transition-colors hover:border-[#C5A880] hover:text-white"
+            aria-expanded={isOpen}
+            aria-label="Toggle navigation menu"
+          >
+            {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
       </div>
 
       {isOpen && (
-        <div className="border-b border-[#22252C] bg-[#0B0C0E] px-6 pt-4 pb-8 lg:hidden">
-          <div className="flex flex-col gap-4">
+        <div className="border-b border-[#22252C] bg-[#0B0C0E] px-6 py-6 lg:hidden animate-in fade-in duration-150">
+          <div className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-sm font-medium tracking-[0.15em] text-[#8C909A] uppercase hover:text-[#C5A880]"
+                className="text-xs font-semibold tracking-[0.15em] text-[#8C909A] uppercase hover:text-[#C5A880] py-2 border-b border-[#22252C]/50"
               >
                 {link.label}
               </Link>
             ))}
-            <div className="mt-4 flex flex-col gap-4 border-t border-[#22252C] pt-6">
+            <div className="mt-2 flex flex-col gap-3 pt-3">
               <a
                 href={`tel:${studioData.contact.phone}`}
-                className="text-xs font-mono text-[#8C909A]"
+                className="text-xs font-mono text-[#8C909A] hover:text-white"
               >
-                {studioData.contact.formattedPhone}
+                Telepon: {studioData.contact.formattedPhone}
               </a>
               <a
                 href="#booking"

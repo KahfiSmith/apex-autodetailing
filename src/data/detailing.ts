@@ -6,10 +6,10 @@ export const studioData: StudioConfig = {
   shortDescription:
     "Spesialis Paint Correction multi-tahap, Nano Ceramic Coating 9H, dan Paint Protection Film (PPF) dengan garansi resmi dan ruang bay berpendingin bebas debu di Surabaya Barat.",
   contact: {
-    phone: "+62317328899",
-    formattedPhone: "(031) 732-8899",
-    whatsapp: "6281234567890",
-    whatsappFormatted: "+62 812-3456-7890",
+    phone: "+6285129627403",
+    formattedPhone: "+62 851-2962-7403",
+    whatsapp: "6285129627403",
+    whatsappFormatted: "+62 851-2962-7403",
     email: "care@apexautostudio.id",
     address: "Jl. Mayjen HR. Muhammad No. 108, Pradahkalikendal",
     city: "Surabaya",
