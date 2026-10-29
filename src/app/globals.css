@@ -18,16 +18,31 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
   background-color: #0B0C0E;
   color: #F4F4F5;
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   background-color: #0B0C0E;
   color: #F4F4F5;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: anywhere;
 }
 
 ::selection {
@@ -36,6 +51,32 @@ body {
 }
 
 :focus-visible {
-  outline: 1px solid #C5A880;
+  outline: 2px solid #C5A880;
   outline-offset: 3px;
+}
+
+.atelier-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.atelier-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%) skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(223, 206, 183, 0.22) 50%,
+    transparent 100%
+  );
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .atelier-sheen:hover::after {
+    transform: translateX(120%) skewX(-18deg);
+  }
 }
