@@ -161,7 +161,7 @@ export default function BeforeAfterSlider() {
             >
               <div className="absolute inset-0">
                 <Image
-                  src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=1400&auto=format&fit=crop"
+                  src="/images/slider-after.jpg"
                   alt="Sesudah restorasi cat optik Apex"
                   fill
                   className="pointer-events-none object-cover"
@@ -174,7 +174,7 @@ export default function BeforeAfterSlider() {
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1400&auto=format&fit=crop"
+                  src="/images/slider-before.jpg"
                   alt="Sebelum restorasi cat swirl mark"
                   fill
                   className="pointer-events-none object-cover brightness-75 contrast-125 saturate-50"

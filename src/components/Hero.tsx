@@ -226,7 +226,7 @@ export default function Hero() {
 
               <div ref={bayImageWrapRef} className="absolute inset-0 h-full w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1400&auto=format&fit=crop"
+                  src="/images/hero.jpg"
                   alt="Supercar detailing finish at Apex"
                   fill
                   priority
