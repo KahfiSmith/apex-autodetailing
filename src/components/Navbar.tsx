@@ -12,6 +12,7 @@ import {
 } from "motion/react";
 import { studioData } from "@/data/detailing";
 import { ATELIER_EASE, atelierSpring } from "@/lib/motion";
+import { scrollToTarget } from "@/lib/scroll";
 
 const NAV_LINKS = [
   { id: "layanan", label: "Layanan", href: "#layanan" },
@@ -103,6 +104,10 @@ export default function Navbar() {
       >
         <Link
           href="/"
+          onClick={(event) => {
+            event.preventDefault();
+            scrollToTarget("top");
+          }}
           className="group inline-flex min-h-11 min-w-0 shrink items-center gap-2 transition-opacity hover:opacity-90"
         >
           <span className="h-2 w-2 shrink-0 border border-[#C5A880] bg-[#C5A880]/25 transition-colors duration-300 group-hover:bg-[#C5A880]" />
@@ -115,9 +120,13 @@ export default function Navbar() {
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.id;
             return (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
+                onClick={(event) => {
+                  event.preventDefault();
+                  scrollToTarget(link.href, -88);
+                }}
                 className={`relative inline-flex min-h-11 items-center text-xs font-medium tracking-[0.12em] uppercase whitespace-nowrap transition-colors duration-200 ${
                   isActive ? "text-white" : "text-[#8C909A] hover:text-[#F4F4F5]"
                 }`}
@@ -130,7 +139,7 @@ export default function Navbar() {
                     className="absolute right-0 bottom-2 left-0 h-[1.5px] bg-[#C5A880]"
                   />
                 )}
-              </Link>
+              </a>
             );
           })}
         </nav>
@@ -144,6 +153,10 @@ export default function Navbar() {
           </a>
           <motion.a
             href="#booking"
+            onClick={(event) => {
+              event.preventDefault();
+              scrollToTarget("#booking", -88);
+            }}
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.985 }}
             className={`atelier-sheen inline-flex h-11 items-center justify-center rounded-none border px-5 text-xs font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
@@ -159,6 +172,10 @@ export default function Navbar() {
         <div className="flex shrink-0 items-center gap-2 lg:hidden">
           <a
             href="#booking"
+            onClick={(event) => {
+              event.preventDefault();
+              scrollToTarget("#booking", -88);
+            }}
             className="hidden h-11 items-center justify-center border border-[#C5A880]/60 px-3.5 text-[11px] font-semibold tracking-wider text-[#C5A880] uppercase transition-colors hover:bg-[#C5A880] hover:text-[#0B0C0E] active:bg-[#C5A880] active:text-[#0B0C0E] sm:inline-flex"
           >
             Reservasi
@@ -203,9 +220,13 @@ export default function Navbar() {
                       ease: ATELIER_EASE,
                     }}
                   >
-                    <Link
+                    <a
                       href={link.href}
-                      onClick={() => setIsOpen(false)}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setIsOpen(false);
+                        scrollToTarget(link.href, -88);
+                      }}
                       className={`flex min-h-11 items-center justify-between border-b border-[#22252C]/60 text-xs font-semibold tracking-[0.16em] uppercase transition-colors ${
                         isActive
                           ? "text-[#C5A880]"
@@ -216,7 +237,7 @@ export default function Navbar() {
                       <span className="font-mono text-[10px] text-[#7A7F8A]">
                         0{idx + 1}
                       </span>
-                    </Link>
+                    </a>
                   </motion.div>
                 );
               })}
@@ -230,7 +251,11 @@ export default function Navbar() {
                 </a>
                 <a
                   href="#booking"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setIsOpen(false);
+                    scrollToTarget("#booking", -88);
+                  }}
                   className="flex h-12 items-center justify-center border border-[#C5A880] bg-[#C5A880] text-xs font-bold tracking-[0.2em] text-[#0B0C0E] uppercase transition-colors hover:bg-transparent hover:text-[#C5A880]"
                 >
                   Reservasi Bay &rarr;
