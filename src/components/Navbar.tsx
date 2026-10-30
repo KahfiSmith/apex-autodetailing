@@ -125,7 +125,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={(event) => {
                   event.preventDefault();
-                  scrollToTarget(link.href, -88);
+                  scrollToTarget(link.href);
                 }}
                 className={`relative inline-flex min-h-11 items-center text-xs font-medium tracking-[0.12em] uppercase whitespace-nowrap transition-colors duration-200 ${
                   isActive ? "text-white" : "text-[#8C909A] hover:text-[#F4F4F5]"
@@ -155,7 +155,7 @@ export default function Navbar() {
             href="#booking"
             onClick={(event) => {
               event.preventDefault();
-              scrollToTarget("#booking", -88);
+              scrollToTarget("#booking");
             }}
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.985 }}
@@ -174,7 +174,7 @@ export default function Navbar() {
             href="#booking"
             onClick={(event) => {
               event.preventDefault();
-              scrollToTarget("#booking", -88);
+              scrollToTarget("#booking");
             }}
             className="hidden h-11 items-center justify-center border border-[#C5A880]/60 px-3.5 text-[11px] font-semibold tracking-wider text-[#C5A880] uppercase transition-colors hover:bg-[#C5A880] hover:text-[#0B0C0E] active:bg-[#C5A880] active:text-[#0B0C0E] sm:inline-flex"
           >
@@ -225,7 +225,7 @@ export default function Navbar() {
                       onClick={(event) => {
                         event.preventDefault();
                         setIsOpen(false);
-                        scrollToTarget(link.href, -88);
+                        scrollToTarget(link.href);
                       }}
                       className={`flex min-h-11 items-center justify-between border-b border-[#22252C]/60 text-xs font-semibold tracking-[0.16em] uppercase transition-colors ${
                         isActive
@@ -254,7 +254,7 @@ export default function Navbar() {
                   onClick={(event) => {
                     event.preventDefault();
                     setIsOpen(false);
-                    scrollToTarget("#booking", -88);
+                    scrollToTarget("#booking");
                   }}
                   className="flex h-12 items-center justify-center border border-[#C5A880] bg-[#C5A880] text-xs font-bold tracking-[0.2em] text-[#0B0C0E] uppercase transition-colors hover:bg-transparent hover:text-[#C5A880]"
                 >

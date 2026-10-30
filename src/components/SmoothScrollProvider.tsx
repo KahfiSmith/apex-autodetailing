@@ -14,11 +14,6 @@ export default function SmoothScrollProvider({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isReduced) {
-      return;
-    }
-
     const lenis = new Lenis({
       duration: 1.35,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -64,15 +59,15 @@ export default function SmoothScrollProvider({
         const el = document.querySelector(href);
         if (el) {
           event.preventDefault();
-          scrollToTarget(href, -88);
+          scrollToTarget(href);
         }
       }
     };
 
-    document.addEventListener("click", handleGlobalClick);
+    document.addEventListener("click", handleGlobalClick, { capture: true });
 
     return () => {
-      document.removeEventListener("click", handleGlobalClick);
+      document.removeEventListener("click", handleGlobalClick, { capture: true });
       gsap.ticker.remove(updateLenis);
       lenis.off("scroll", handleScroll);
       lenis.destroy();

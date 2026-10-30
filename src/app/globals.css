@@ -26,6 +26,7 @@ html {
 
 html.lenis {
   scroll-behavior: auto;
+  scroll-padding-top: 0;
   height: auto;
 }
 

@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-export function scrollToTarget(target: string | HTMLElement, offset = -88) {
+export function scrollToTarget(target: string | HTMLElement, offset = 0) {
   if (typeof window === "undefined") {
     return;
   }
@@ -41,7 +41,7 @@ export function scrollToTarget(target: string | HTMLElement, offset = -88) {
     const rect = element.getBoundingClientRect();
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     window.scrollTo({
-      top: scrollTop + rect.top + offset,
+      top: scrollTop + rect.top - 88 + offset,
       behavior: "smooth",
     });
   }
