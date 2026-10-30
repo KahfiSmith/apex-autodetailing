@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${syne.variable} h-full antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${syne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0B0C0E] text-[#E4E4E7] font-sans selection:bg-[#C5A880] selection:text-black">
         {children}
