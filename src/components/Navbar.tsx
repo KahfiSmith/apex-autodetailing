@@ -200,11 +200,11 @@ export default function Navbar() {
         {isOpen && (
           <motion.div
             id="mobile-atelier-nav"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.28, ease: ATELIER_EASE }}
-            className="overflow-hidden border-t border-[#22252C] bg-[#0B0C0E] lg:hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: ATELIER_EASE }}
+            className="absolute top-full left-0 right-0 z-50 border-b border-[#22252C] bg-[#0B0C0E]/98 shadow-2xl backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col px-6 py-5">
               {NAV_LINKS.map((link, idx) => {

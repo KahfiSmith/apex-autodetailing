@@ -20,7 +20,7 @@ export default function SmoothScrollProvider({
     }
 
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.35,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
@@ -28,8 +28,8 @@ export default function SmoothScrollProvider({
       wheelMultiplier: 0.95,
       touchMultiplier: 1.5,
       autoRaf: false,
-      anchors: { offset: -88 },
-      respectReducedMotion: true,
+      anchors: false,
+      respectReducedMotion: false,
     });
 
     lenisRef.current = lenis;

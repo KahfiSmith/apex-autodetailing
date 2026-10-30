@@ -13,7 +13,11 @@ export function scrollToTarget(target: string | HTMLElement, offset = -88) {
 
   if (target === "top" || target === "#" || target === "/") {
     if (window.__lenis) {
-      window.__lenis.scrollTo(0, { duration: 1.1 });
+      window.__lenis.scrollTo(0, {
+        duration: 1.35,
+        immediate: false,
+        force: true,
+      });
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -27,7 +31,12 @@ export function scrollToTarget(target: string | HTMLElement, offset = -88) {
   }
 
   if (window.__lenis) {
-    window.__lenis.scrollTo(element as HTMLElement, { offset, duration: 1.15 });
+    window.__lenis.scrollTo(element as HTMLElement, {
+      offset,
+      duration: 1.35,
+      immediate: false,
+      force: true,
+    });
   } else {
     const rect = element.getBoundingClientRect();
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
