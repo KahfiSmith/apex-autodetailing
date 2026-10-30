@@ -8,7 +8,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { studioData } from "@/data/detailing";
-import HeroSpecularBackdrop from "@/components/HeroSpecularBackdrop";
 import AnimatedMetric from "@/components/AnimatedMetric";
 import {
   ATELIER_EASE,
@@ -74,7 +73,18 @@ export default function Hero() {
       ref={sectionRef}
       className="relative overflow-hidden border-b border-[#22252C] bg-[#0B0C0E] pt-10 pb-24 lg:pt-16 lg:pb-32"
     >
-      <HeroSpecularBackdrop />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{
+            background:
+              "radial-gradient(62% 48% at 72% 28%, rgba(197, 168, 128, 0.11) 0%, rgba(244, 244, 245, 0.03) 38%, rgba(11, 12, 14, 0) 76%)",
+          }}
+        />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
         <motion.div
