@@ -14,7 +14,8 @@ export function scrollToTarget(target: string | HTMLElement, offset = 0) {
   if (target === "top" || target === "#" || target === "/") {
     if (window.__lenis) {
       window.__lenis.scrollTo(0, {
-        duration: 1.35,
+        duration: 1.6,
+        easing: (t: number) => 1 - Math.pow(1 - t, 4),
         immediate: false,
         force: true,
       });
@@ -33,7 +34,8 @@ export function scrollToTarget(target: string | HTMLElement, offset = 0) {
   if (window.__lenis) {
     window.__lenis.scrollTo(element as HTMLElement, {
       offset,
-      duration: 1.35,
+      duration: 1.6,
+      easing: (t: number) => 1 - Math.pow(1 - t, 4),
       immediate: false,
       force: true,
     });
