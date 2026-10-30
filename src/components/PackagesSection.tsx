@@ -97,7 +97,6 @@ export default function PackagesSection() {
 
               return (
                 <motion.article
-                  layout="position"
                   key={pkg.id}
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}

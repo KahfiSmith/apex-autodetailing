@@ -80,16 +80,15 @@ export default function TransformationShowcase() {
           if (parallaxLayer && media) {
             gsap.fromTo(
               parallaxLayer,
-              { yPercent: -4.5, scale: 1.08 },
+              { yPercent: -3 },
               {
-                yPercent: 4.5,
-                scale: 1.03,
+                yPercent: 3,
                 ease: "none",
                 scrollTrigger: {
                   trigger: media,
                   start: "top bottom",
                   end: "bottom top",
-                  scrub: 0.6,
+                  scrub: true,
                 },
               }
             );
@@ -125,12 +124,12 @@ export default function TransformationShowcase() {
           {case1 && (
             <article className="atelier-case-card group relative overflow-hidden border border-[#22252C] bg-[#121316] transition-colors duration-300 hover:border-[#2E333C]">
               <div className="atelier-case-media relative aspect-16/9 w-full overflow-hidden sm:aspect-21/9">
-                <div className="atelier-case-parallax absolute inset-0 h-full w-full">
+                <div className="atelier-case-parallax atelier-parallax-layer absolute inset-0 h-full w-full">
                   <Image
                     src={case1.image}
                     alt={case1.vehicleName}
                     fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    className="object-cover"
                     sizes="100vw"
                   />
                 </div>
@@ -173,12 +172,12 @@ export default function TransformationShowcase() {
             {case2 && (
               <article className="atelier-case-card group flex flex-col justify-between border border-[#22252C] bg-[#121316] transition-colors duration-300 hover:border-[#2E333C] lg:col-span-7">
                 <div className="atelier-case-media relative aspect-16/10 w-full overflow-hidden">
-                  <div className="atelier-case-parallax absolute inset-0 h-full w-full">
+                  <div className="atelier-case-parallax atelier-parallax-layer absolute inset-0 h-full w-full">
                     <Image
                       src={case2.image}
                       alt={case2.vehicleName}
                       fill
-                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                      className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 60vw"
                     />
                   </div>
@@ -210,12 +209,12 @@ export default function TransformationShowcase() {
             {case3 && (
               <article className="atelier-case-card group flex flex-col justify-between border border-[#22252C] bg-[#121316] transition-colors duration-300 hover:border-[#2E333C] lg:col-span-5">
                 <div className="atelier-case-media relative aspect-4/3 w-full overflow-hidden">
-                  <div className="atelier-case-parallax absolute inset-0 h-full w-full">
+                  <div className="atelier-case-parallax atelier-parallax-layer absolute inset-0 h-full w-full">
                     <Image
                       src={case3.image}
                       alt={case3.vehicleName}
                       fill
-                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                      className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 40vw"
                     />
                   </div>
@@ -249,12 +248,12 @@ export default function TransformationShowcase() {
             <article className="atelier-case-card group relative overflow-hidden border border-[#22252C] bg-[#121316] transition-colors duration-300 hover:border-[#2E333C]">
               <div className="grid items-stretch lg:grid-cols-12">
                 <div className="atelier-case-media relative aspect-16/9 w-full overflow-hidden sm:aspect-16/10 lg:col-span-6 lg:aspect-auto lg:min-h-[340px]">
-                  <div className="atelier-case-parallax absolute inset-0 h-full w-full">
+                  <div className="atelier-case-parallax atelier-parallax-layer absolute inset-0 h-full w-full">
                     <Image
                       src={case4.image}
                       alt={case4.vehicleName}
                       fill
-                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                      className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>

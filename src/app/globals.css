@@ -38,6 +38,12 @@ html.lenis body {
   pointer-events: none;
 }
 
+.atelier-parallax-layer {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
 .lenis [data-lenis-prevent] {
   overscroll-behavior: contain;
 }

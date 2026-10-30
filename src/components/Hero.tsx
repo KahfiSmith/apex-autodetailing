@@ -32,16 +32,15 @@ export default function Hero() {
         if (bayFrameRef.current && bayImageWrapRef.current) {
           gsap.fromTo(
             bayImageWrapRef.current,
-            { yPercent: -5, scale: 1.07 },
+            { yPercent: -4 },
             {
-              yPercent: 6,
-              scale: 1.02,
+              yPercent: 4,
               ease: "none",
               scrollTrigger: {
                 trigger: bayFrameRef.current,
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 0.65,
+                scrub: true,
               },
             }
           );
@@ -234,7 +233,10 @@ export default function Hero() {
                 className="pointer-events-none absolute top-3 right-3 z-20 h-3 w-3 border-t border-r border-[#C5A880]/70"
               />
 
-              <div ref={bayImageWrapRef} className="absolute inset-0 h-full w-full">
+              <div
+                ref={bayImageWrapRef}
+                className="atelier-parallax-layer absolute inset-0 h-full w-full"
+              >
                 <Image
                   src="/images/hero.jpg"
                   alt="Supercar detailing finish at Apex"

@@ -3,61 +3,13 @@
 import { useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { ATELIER_EASE } from "@/lib/motion";
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function BeforeAfterSlider() {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const userInteractedRef = useRef(false);
-  const introTweenRef = useRef<gsap.core.Timeline | null>(null);
-
-  const stopIntroCalibration = useCallback(() => {
-    userInteractedRef.current = true;
-    if (introTweenRef.current) {
-      introTweenRef.current.kill();
-      introTweenRef.current = null;
-    }
-  }, []);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        if (!containerRef.current) {
-          return;
-        }
-
-        const proxy = { pos: 50 };
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 76%",
-            once: true,
-          },
-          onUpdate: () => {
-            if (!userInteractedRef.current) {
-              setSliderPosition(proxy.pos);
-            }
-          },
-        });
-
-        tl.to(proxy, { pos: 28, duration: 0.55, ease: "power2.out" })
-          .to(proxy, { pos: 68, duration: 0.7, ease: "power2.inOut" })
-          .to(proxy, { pos: 50, duration: 0.5, ease: "power3.out" });
-
-        introTweenRef.current = tl;
-      });
-    },
-    { scope: sectionRef }
-  );
 
   const updateFromClientX = useCallback((clientX: number) => {
     if (!containerRef.current) {
@@ -70,7 +22,6 @@ export default function BeforeAfterSlider() {
   }, []);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    stopIntroCalibration();
     setIsDragging(true);
     event.currentTarget.setPointerCapture(event.pointerId);
     updateFromClientX(event.clientX);
@@ -94,19 +45,15 @@ export default function BeforeAfterSlider() {
     const step = event.shiftKey ? 10 : 3;
     if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
       event.preventDefault();
-      stopIntroCalibration();
       setSliderPosition((prev) => Math.max(0, prev - step));
     } else if (event.key === "ArrowRight" || event.key === "ArrowUp") {
       event.preventDefault();
-      stopIntroCalibration();
       setSliderPosition((prev) => Math.min(100, prev + step));
     } else if (event.key === "Home") {
       event.preventDefault();
-      stopIntroCalibration();
       setSliderPosition(0);
     } else if (event.key === "End") {
       event.preventDefault();
-      stopIntroCalibration();
       setSliderPosition(100);
     }
   };

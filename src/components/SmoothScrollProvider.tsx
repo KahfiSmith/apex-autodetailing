@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
-import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { scrollToTarget } from "@/lib/scroll";
 
@@ -15,14 +14,11 @@ export default function SmoothScrollProvider({
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.6,
-      easing: (t: number) => 1 - Math.pow(1 - t, 4),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
+      lerp: 0.1,
       smoothWheel: true,
-      wheelMultiplier: 1.05,
-      touchMultiplier: 1.2,
-      autoRaf: false,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.0,
+      autoRaf: true,
       anchors: false,
       respectReducedMotion: false,
     });
@@ -35,13 +31,6 @@ export default function SmoothScrollProvider({
     };
 
     lenis.on("scroll", handleScroll);
-
-    const updateLenis = (time: number) => {
-      lenis.raf(time * 1000);
-    };
-
-    gsap.ticker.add(updateLenis);
-    gsap.ticker.lagSmoothing(0);
 
     const handleGlobalClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
@@ -68,7 +57,6 @@ export default function SmoothScrollProvider({
 
     return () => {
       document.removeEventListener("click", handleGlobalClick, { capture: true });
-      gsap.ticker.remove(updateLenis);
       lenis.off("scroll", handleScroll);
       lenis.destroy();
       lenisRef.current = null;
